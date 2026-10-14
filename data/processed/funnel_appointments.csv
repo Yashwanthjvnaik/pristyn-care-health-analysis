@@ -1,0 +1,4 @@
+stage,patients,drop_off_pct,cumulative_pct_of_booked
+Booked,2000,,100.0
+Attended,1676,16.2,83.8
+Consultation completed,1676,0.0,83.8

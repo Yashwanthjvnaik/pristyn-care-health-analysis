@@ -87,6 +87,27 @@ Full channel- and category-level breakdowns are in
 `data/processed/channel_metrics.csv` and `data/processed/category_metrics.csv`,
 and reproduced in `notebooks/01_exploratory_analysis.ipynb`.
 
+## Checkpoint 3 — Deep-Dive Analysis
+
+New data packs: `da_healthcare_appointments.csv` (2,000 appointments), `sunrise_patient_satisfaction.csv`, `sunrise_resource_utilisation.csv`.
+
+```bash
+python -m src.deep_dive      # funnel, segment tests, specialty table, monthly trend
+pytest tests/ -v             # 11 tests
+```
+
+Key results (full write-up: `docs/Milestone3_DeepDive.docx`):
+
+| Finding | Result |
+|---|---|
+| Overall no-show | 16.2% (324 of 2,000) |
+| Only significant driver | Specialty (chi-square p = 0.00003) |
+| Top-3 leakage | General Medicine 22.5%, Dermatology 20.5%, Ophthalmology 19.9% (39% of bookings, 50.3% of no-shows) |
+| Not significant | Department, reason, insurance, age, lead time, hour, wait time |
+| Anomaly | May 2025 no-show 26.0% (p = 0.0002) |
+
+Limits: only booking -> attended -> consultation stages exist in the data; the resource file has impossible values in 336 of 400 rows and is not analysed; no revenue field exists, so the Excel revenue model needs an assumed revenue per consultation.
+
 ## AI Tool Usage
 
 Portions of this pipeline (project scaffolding, docstrings, and test cases)

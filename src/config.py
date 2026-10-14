@@ -25,3 +25,13 @@ PROCESSED_FILES = {
 
 # Ensure processed dir exists at import time (idempotent)
 DATA_PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+
+# --- Checkpoint 3: healthcare data packs ---
+RAW_FILES.update({
+    "appointments": DATA_RAW_DIR / "da_healthcare_appointments.csv",
+    "satisfaction": DATA_RAW_DIR / "sunrise_patient_satisfaction.csv",
+    "resources": DATA_RAW_DIR / "sunrise_resource_utilisation.csv",
+})
+REPORTS_DIR = ROOT_DIR / "reports"
+FIGURES_DIR = REPORTS_DIR / "figures"
+FIGURES_DIR.mkdir(parents=True, exist_ok=True)
