@@ -162,10 +162,29 @@ footer a{color:var(--ink2)}
   .drow .nm{grid-area:nm}.drow .vd{grid-area:vd}.drow .pl{grid-area:pl}.drow .rg{grid-area:rg}.drow .pv{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Checkpoint 4 revisions */
+.skip{position:absolute;left:-9999px;top:8px;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:8px;z-index:50;text-decoration:none}
+.skip:focus{left:12px}
+.jump{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:22px;font-size:.86rem}
+.jump a{color:var(--ink2);text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+.jump a:hover{color:var(--seen)}
+.status{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:14px;font-size:.9rem;color:var(--ink2)}
+.status b{color:var(--ink)}
+.reset{border:1px solid var(--ink);background:transparent;border-radius:999px;padding:8px 16px;min-height:40px;font-size:.88rem;cursor:pointer}
+.reset:hover{background:var(--ink);color:var(--bg)}
+.reset[hidden]{display:none}
+.chip{min-height:40px}
+.hint{font-size:.82rem;color:var(--mute);margin-top:8px}
+.totop{display:block;margin:0 0 10px;color:var(--ink2)}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (max-width:860px){.chip{padding:9px 16px;min-height:44px}.reset{min-height:44px}}
 </style>
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#room-sec">Skip to the charts</a>
+<div class="wrap" id="top">
 
 <header>
   <p class="kick">Cynaris Solutions · Data Analyst project · Milestone 4</p>
@@ -186,6 +205,14 @@ footer a{color:var(--ink2)}
     </div>
   </div>
   <div class="chips" id="chips" role="group" aria-label="Scope the page to one specialty"></div>
+  <div class="status" id="status" role="status" aria-live="polite">
+    <span id="statusTxt"></span>
+    <button type="button" class="reset" id="resetBtn" hidden>Reset to all specialties</button>
+  </div>
+  <p class="hint">Tip: select a specialty chip or a block of dots to scope the whole page. Press Esc to reset.</p>
+  <nav class="jump" aria-label="Jump to a section">
+    <a href="#room-sec">Waiting room</a><a href="#funnel-sec">Funnel</a><a href="#leak-sec">Specialty leakage</a><a href="#drv-sec">Factors tested</a><a href="#trend-sec">Monthly trend</a><a href="#impact-sec">Impact</a><a href="#ctx-sec">Sunrise context</a><a href="#method-sec">Method and limits</a>
+  </nav>
 </header>
 
 <section id="room-sec">
@@ -279,6 +306,7 @@ footer a{color:var(--ink2)}
 </section>
 
 <footer>
+  <a class="totop" href="#top">Back to top ↑</a>
   Prepared by Yashwanth J V Nayak, Data Analyst Intern, Cynaris Solutions. Sources: da_healthcare_appointments.csv (2,000 appointments), sunrise_patient_satisfaction.csv (600 surveys), sunrise_resource_utilisation.csv (400 records). Code and tests: <a href="https://github.com/Yashwanthjvnaik/pristyn-care-health-analysis">github.com/Yashwanthjvnaik/pristyn-care-health-analysis</a>
 </footer>
 </div>
@@ -544,7 +572,17 @@ function context(){
   ].forEach(t=>F.appendChild(H('span',null,t)));
 }
 
-function render(){hero();chips();markRoom();trend()}
+function status(){
+  const t=document.getElementById('statusTxt'),r=document.getElementById('resetBtn');
+  t.innerHTML='';
+  t.append('Currently showing: ');
+  const b=document.createElement('b');b.textContent=sel==='All'?'All specialties':sel;t.appendChild(b);
+  r.hidden=sel==='All';
+}
+function resetSel(){if(sel!=='All'){sel='All';render();const c=document.querySelector('.chip');if(c)c.focus()}}
+document.getElementById('resetBtn').addEventListener('click',resetSel);
+document.addEventListener('keydown',e=>{if(e.key==='Escape')resetSel()});
+function render(){hero();chips();markRoom();trend();status()}
 buildRoom();funnel();leak();drivers();trendNotes();impact();context();render();
 $('lift').addEventListener('change',impact);$('fee').addEventListener('input',impact);
 let mq=window.matchMedia('(max-width:860px)');mq.addEventListener&&mq.addEventListener('change',leak);
