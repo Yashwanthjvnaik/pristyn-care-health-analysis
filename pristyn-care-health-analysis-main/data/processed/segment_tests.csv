@@ -1,0 +1,8 @@
+segment,chi2,dof,p_value,significant_5pct
+specialty,32.61,7,3.128752139893607e-05,True
+patient_age_group,7.45,4,0.11398141992883935,False
+hour_bucket,2.65,2,0.2659817732971399,False
+lead_bucket,2.29,3,0.5151056275832533,False
+department,2.13,3,0.5450997808471358,False
+reason,2.97,4,0.5635504466021122,False
+insurance_type,1.18,3,0.757035789687659,False

@@ -1,0 +1,10 @@
+metric,value
+total_customers,200.0
+churned_customers,6.0
+overall_churn_rate_pct,3.0
+avg_orders_per_customer,11.54
+avg_revenue_per_customer,24963.1
+repeat_customer_rate_pct,96.5
+discount_return_correlation,-0.018
+total_transactions,1000.0
+total_net_revenue,8021851.2

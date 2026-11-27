@@ -1,0 +1,5 @@
+Channel,Transactions,Revenue,Customers,Churned,Churn_Rate_Pct,Revenue_Per_Customer
+Website,249,2147641.4,57,0,0.0,37677.92
+Offline,246,2052421.6,49,3,6.12,41886.16
+Marketplace,255,1961555.35,43,1,2.33,45617.57
+App,250,1860232.85,51,2,3.92,36475.15

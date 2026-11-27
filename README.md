@@ -106,6 +106,9 @@ Key results (full write-up: `docs/Milestone3_DeepDive.docx`):
 | Not significant | Department, reason, insurance, age, lead time, hour, wait time |
 | Anomaly | May 2025 no-show 26.0% (p = 0.0002) |
 
+### Checkpoint 3 revision
+`python -m src.predictive_model` adds assumption checks, Holm correction, adjusted odds ratios and a cross-validated no-show model (logistic AUC 0.56, permutation p = 0.01: weak, specialty-driven). Full details: `docs/METHODOLOGY.md`.
+
 Limits: only booking -> attended -> consultation stages exist in the data; the resource file has impossible values in 336 of 400 rows and is not analysed; no revenue field exists, so the Excel revenue model needs an assumed revenue per consultation.
 
 ## AI Tool Usage
