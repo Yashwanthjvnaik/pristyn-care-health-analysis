@@ -1,8 +1,0 @@
-term,odds_ratio,ci_low,ci_high,p_value
-General Medicine,2.7837,1.6522,4.69,0.0001
-Dermatology,2.4333,1.4447,4.0985,0.0008
-Ophthalmology,2.3982,1.4325,4.0147,0.0009
-ENT,2.1278,1.2468,3.6315,0.0056
-Pediatrics,1.922,1.1087,3.3317,0.0199
-Orthopedics,1.3707,0.7773,2.4169,0.2759
-Gynecology,1.0085,0.5513,1.8447,0.9782
